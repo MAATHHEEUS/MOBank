@@ -4,6 +4,14 @@ body {
     text-align: center;
 }
 
+form {
+    background-color: rgb(255, 255, 255);
+    padding: 15px;
+    width: 700px;
+    margin: auto;
+    color: black;
+}
+
 main {
     background-color: rgb(255, 255, 255);
     padding: 15px;
@@ -15,4 +23,31 @@ main {
 
 footer {
     color: white;
+}
+
+div.serv {
+    background-color: rgb(255, 255, 255);
+    padding: 15px;
+    width: 400px;
+    margin: auto;
+    color: black;
+    box-shadow: 3px 3px green;
+}
+
+div.esquerda {
+    width: 49%;
+    float: left;
+    text-align: center;
+}
+
+div.direita {
+    width: 49%;
+    text-align: center;
+    float: right;
+}
+
+div#saldo {
+    width: 19%;
+    text-align: center;
+    float: right;
 }
