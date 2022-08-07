@@ -19,6 +19,7 @@ function validar() {// validar se o cliente digitou corretamente e se o mesmo ex
         //if(VALIDAR SE SENHA ESTÁ CORRETA) {}
         alert('Tudo OK!')
         //ir para pag iframe
+        open("../HTML/frame.html","blank") 
     }
     
 }
