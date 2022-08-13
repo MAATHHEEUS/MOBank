@@ -2,6 +2,8 @@ body {
     background-color: black;
     color: green;
     text-align: center;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 form {
@@ -50,4 +52,8 @@ div#saldo {
     width: 19%;
     text-align: center;
     float: right;
+}
+
+a:link {
+    color: green;
 }
