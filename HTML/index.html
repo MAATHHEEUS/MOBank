@@ -7,6 +7,11 @@
     <title>MOBank</title>
     <link rel="stylesheet" href="../CSS/estilo.css">
     <link rel="shortcut icon" href="../IMAGENS/logo.png" type="image/x-icon">
+    <style>
+        main{
+            width: 400px;
+        }
+    </style>
 </head>
 <body>
     <img src="../IMAGENS/logo.png" alt="logo"><h1>MO Bank</h1>
@@ -20,9 +25,9 @@
     <br>
     <main>
         <h2>Login</h2>
-        <label for="agencia">Agência: </label><input type="text" id="agencia" placeholder="apenas números" maxlength="4"><br><br>
-        <label for="conta">Conta: </label><input type="text" id="conta" placeholder="números com dígito" maxlength="6"><br><br>
-        <label for="senha">Senha: </label><input type="password" id="senha"><br><br>
+        <label for="agencia">Agência: </label><input type="text" id="agencia" placeholder="apenas números" maxlength="4" size="10"><br>
+        <label for="conta">Conta: </label><input type="text" id="conta" placeholder="números com dígito" maxlength="6" size="13"><br>
+        <label for="senha">Senha: </label><input type="password" id="senha" maxlength="6" size="7"><br>
         <input type="button" id="bot_acessar" value="Acessar conta"> 
     </main>
     <footer>

@@ -6,13 +6,32 @@ body {
     font-family: 'Times New Roman', Times, serif;
 }
 
-form {
+label
+{
+    /*Mantendo label com mesmo tamanho e alinhado*/
+    width: 130px;
+    text-align: right;
+    display: inline-block;
+}
+
+input:focus
+{
+    /*Dar destaque para o campo selecionado*/
+    border-color: black;
+}
+
+input{
+    /*Espaçar os campos*/
+    height: 20px;
+    margin-bottom: 5px;
+}
+/*form {
     background-color: rgb(255, 255, 255);
     padding: 15px;
     width: 700px;
     margin: auto;
     color: black;
-}
+}*/
 
 main {
     background-color: rgb(255, 255, 255);
