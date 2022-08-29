@@ -9,7 +9,7 @@ function validar() {
     }else if(TestaCPF(CPF) == false){
         alert(`CPF INVÁLIDO!!!`)
     }else {
-        alert("Tudo ok!")
+        alert("PHP!")
     }
 
 }
@@ -20,7 +20,7 @@ function TestaCPF(CPF) {
     for (let index = 1; index <= 9; index++) {//multiplica os 9 primeiros digitos por numeros decrescente de 10 a 2 e soma tudo
         soma += parseInt(CPF.substring(index-1, index)) * (11-index)
     }
-    console.log(soma)
+    //console.log(soma)
     resto = (soma * 10) % 11 //resto da divisão por 11 multiplicado por 10
     console.log(resto)
     if(resto == 10 || resto == 11) {//se resto for 10 ou 11 será considerado 0. Senão fica com resto da divisão mesmo

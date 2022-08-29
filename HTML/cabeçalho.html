@@ -7,11 +7,30 @@
     <title>MObank</title>
     <link rel="stylesheet" href="../CSS/estilo.css">
     <link rel="shortcut icon" href="../IMAGENS/" type="image/x-icon">
+    <style>
+        p{
+            font-size: 15px;
+        }
+    </style>
 </head>
 <body>
-    <img src="../IMAGENS/logo.png" alt="logo"><h1>Olá, fulano</h1>
+    <img src="../IMAGENS/logo.png" alt="logo"><h2>Olá, fulano</h2>
     <div id="saldo">
-        saldo R$ xxx,xx
+        <label for="saldo" id="valorsaldo">saldo R$ xxx,xx</label> 
+        <input type="checkbox" id="mostrasaldo" name="mostrasaldo">
     </div>
+    <script>
+        var mostrasaldo = document.getElementById('mostrasaldo')
+        mostrasaldo.addEventListener('click', mostrasenha)
+        function mostrasenha() {
+            var saldo = document.getElementById('valorsaldo')
+            if (saldo.innerText == "saldo R$ xxx,xx") {
+                saldo.innerText = "saldo R$ 123,45"
+            }else {
+                saldo.innerText = "saldo R$ xxx,xx"
+            }
+        }
+        
+    </script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 body {
     background-color: black;
-    color: green;
+    color: rgba(83, 196, 83, 0.849);
     text-align: center;
     font-size: 18px;
     font-family: 'Times New Roman', Times, serif;
@@ -9,7 +9,6 @@ body {
 label
 {
     /*Mantendo label com mesmo tamanho e alinhado*/
-    width: 130px;
     text-align: right;
     display: inline-block;
 }
@@ -25,13 +24,6 @@ input{
     height: 20px;
     margin-bottom: 5px;
 }
-/*form {
-    background-color: rgb(255, 255, 255);
-    padding: 15px;
-    width: 700px;
-    margin: auto;
-    color: black;
-}*/
 
 main {
     background-color: rgb(255, 255, 255);
@@ -74,5 +66,5 @@ div#saldo {
 }
 
 a:link {
-    color: green;
+    color: rgba(83, 196, 83, 0.849);
 }
