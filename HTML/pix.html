@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pix</title>
+    <link rel="stylesheet" href="../CSS/estilo.css">
+    <link rel="shortcut icon" href="../IMAGENS/logo.png" type="image/x-icon">
+</head>
+<body>
+    <h2>PIX</h2>
+    <form action="">
+        <label for="tipoChave">Tipo de chave: </label>
+        <select name="tipoChave" id="tipoChave">
+            <option value=""></option>
+            <option value="cel">Celular</option>
+            <option value="doc">CPF/CNPJ</option>
+            <option value="email">e-mail</option>
+            <option value="aleatorio">Chave aleatória</option>
+            <option value="copiaCola">Copia e cola</option>
+        </select>
+        <br><br>
+        <label for="contato">Escolher um contato:</label>
+        <select name="contato" id="contato">
+            <optgroup label="Seus contatos">
+                <option value=""></option><!--Pegar os contatos no banco de dados (se houver)-->
+            </optgroup>
+        </select>
+        <br><br>
+        <label for="valor">Valor R$ </label><input type="number" name="valor" id="valor" min="00.00" value="00.00" required><br>
+        <label for="desc">Descrição</label><input type="text" name="desc" id="desc" placeholder="Opcional"><br>
+        <label for="chave">Chave: </label><input type="text" name="chave" id="chave" required><br>
+        <input type="checkbox" name="adicionaContato" id="adicionaContato"><label for="adicionaContato">Adicionar chave aos contatos</label><br>
+        <label for="senha">Senha: </label><input type="password" id="senha" maxlength="6" size="7"><br>
+        <input type="submit" value="Trasferir">
+    </form>
+</body>
+</html>

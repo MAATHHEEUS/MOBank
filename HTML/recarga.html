@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recarga</title>
+    <link rel="stylesheet" href="../CSS/estilo.css">
+    <link rel="shortcut icon" href="../IMAGENS/logo.png" type="image/x-icon">
+</head>
+<body>
+    <h2>Recarga de Celular</h2>
+    <label for="operadora">Operadora: </label>
+    <select name="operadora" id="operadora">
+        <option value="vivo">Vivo</option>
+        <option value="claro">Claro</option>
+        <option value="tim">Tim</option>
+        <option value="oi">Oi</option>
+        <option value="nextel">Nextel</option>
+    </select>
+    <br><br>
+    <label for="contato">Contatos salvos:</label>
+    <select name="contato" id="contato">
+        <optgroup label="Seus contatos">
+            <option value=""></option><!--Pegar os contatos no banco de dados (se houver)-->
+        </optgroup>
+    </select>
+    <br><br>
+    <label for="num">Número com DDD: </label><input type="number" name="num" id="num" required placeholder="11974200390" size="13" maxlength="11"><br>
+    <input type="checkbox" name="salvarContato" id="salvarContato"><label for="salvarContato">Salvar contato</label><br>
+    <label for="senha">Senha: </label><input type="password" id="senha" maxlength="6" size="7"><br>
+    <input type="submit" value="Avançar">
+</body>
+</html>

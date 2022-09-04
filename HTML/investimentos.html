@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investimentos</title>
+    <link rel="stylesheet" href="../CSS/estilo.css">
+    <link rel="shortcut icon" href="../IMAGENS/logo.png" type="image/x-icon">
+</head>
+<body>
+    <h2>Investimentos</h2>
+    <div class="esquerda">
+        <h4>Meus Investimentos</h4>
+        <div id="saldo">
+            Investido
+            <label for="saldo" id="valorsaldo">saldo R$ xxx,xx</label> 
+            <input type="checkbox" id="mostrasaldo" name="mostrasaldo">
+        </div>
+        <p>Rendimentos: //Descrever os rendimentos! </p>
+        <input type="button" name="botDetalhes" id="botDetalhes" value="Detalhes"><br>
+        <input type="button" name="botGrafico" id="botGrafico" value="Gráfico">
+    </div>
+    <div class="direita">
+        <h4>Investir</h4>
+        <a href=".html" target="corpo">
+            <div class="serv">
+                Renda fixa (CDB, LC, LCA, LCI, etc)   
+            </div>
+        </a><br>
+        <a href=".html" target="corpo">
+            <div class="serv">
+                Renda variável (Ações, ETF, BDR, etc)   
+            </div>
+        </a><br>
+        <a href=".html" target="corpo">
+            <div class="serv">
+                Previdência (Planos PGBL e VGBL, etc)   
+            </div>
+        </a><br>
+    </div>
+    <script src="../JS/js_mostraSaldo.js"></script>
+</body>
+</html>

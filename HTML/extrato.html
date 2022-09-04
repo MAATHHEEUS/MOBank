@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extrato</title>
+    <link rel="stylesheet" href="../CSS/estilo.css">
+    <link rel="shortcut icon" href="../IMAGENS/logo.png" type="image/x-icon">
+</head>
+<body>
+    <h2>Extrato</h2>
+    <label for="periodo">Escolha o período: </label>
+    <select name="periodo" id="periodo">
+        <option value="tresDias">3 dias</option>
+        <option value="dezDias">10 dias</option>
+        <option value="umMes">1 mês</option>
+        <option value="tresMes">3 meses</option>
+    </select>
+    <br><br>
+    <label for="tipoConta">Qual conta: </label>
+    <input type="radio" value="corrente" id="corrente" name="tipoConta" checked><label for="corrente">Corrente</label>
+    <input type="radio" name="tipoConta" id="poupanca" value="poupanca"><label for="poupanca">Poupança</label>
+    <br>
+    <input type="button" name="gerar" id="gerar" value="Gerar extrato">
+    <p>//DETALHAR O EXTRADO</p>
+</body>
+</html>

@@ -19,18 +19,7 @@
         <label for="saldo" id="valorsaldo">saldo R$ xxx,xx</label> 
         <input type="checkbox" id="mostrasaldo" name="mostrasaldo">
     </div>
-    <script>
-        var mostrasaldo = document.getElementById('mostrasaldo')
-        mostrasaldo.addEventListener('click', mostrasenha)
-        function mostrasenha() {
-            var saldo = document.getElementById('valorsaldo')
-            if (saldo.innerText == "saldo R$ xxx,xx") {
-                saldo.innerText = "saldo R$ 123,45"
-            }else {
-                saldo.innerText = "saldo R$ xxx,xx"
-            }
-        }
-        
+    <script src="../JS/js_mostraSaldo.js"> 
     </script>
 </body>
 </html>
