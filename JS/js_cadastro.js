@@ -1,6 +1,7 @@
 let bot_cadastra = document.getElementById('bot_cadastrar')
 bot_cadastra.addEventListener('click', validar)
 let CPF = 0
+let form = document.getElementById('form')
 
 function validar() {
     CPF = document.getElementById('CPF').value
@@ -9,11 +10,12 @@ function validar() {
     }else if(TestaCPF(CPF) == false){
         alert(`CPF INVÁLIDO!!!`)
     }else {
-        alert("PHP!")
+        form.submit()
     }
 
 }
 
+//Validação de CPF
 function TestaCPF(CPF) {
     var soma = 0
     var resto = 0
