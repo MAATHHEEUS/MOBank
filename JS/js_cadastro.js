@@ -1,8 +1,9 @@
 let bot_cadastra = document.getElementById('bot_cadastrar')
 bot_cadastra.addEventListener('click', cadastrar)
 let CPF = 0
-let form = document.getElementById('form')
 let dados
+let formPHP = "../PHP/cadastro.php"
+var msg = document.getElementById('msg')
 
 function cadastrar() {
     CPF = document.getElementById('CPF').value
@@ -11,35 +12,26 @@ function cadastrar() {
     }else if(validarCPF(CPF) == false){
         alert(`CPF INVÁLIDO!!!`)
     }else {
-        //form.submit()
-        //dados = 'acao=cadastrar&cpf=' + '#CPF'.val()
-        //+ '&nome=' + '#nome'.val()
-        //+ '&email=' + '#email'.val()
-        //+ '&senha=' + '#senha'.val();
-        dados = 'cpf=CPF&nome=nome&email=email&senha=senha'
-        //enviar()
+        dados = 'acao=cadastrar&cpf=' + document.getElementById('CPF').val
+        + '&nome=' + document.getElementById('nome').val
+        + '&email=' + document.getElementById('email').val
+        + '&senha=' + document.getElementById('senha').val;
         enviar()
     }
-
 }
 
 function enviar(){
     //ajax
-    $.ajax({
-        url: "../PHP/cadastroteste.php",//caminho do php
-        type: "POST",//método de coleta
-        data: dados,//data: "campo1=dado1&campo2=dado2&campo3=dado3", dados do form
-        dataType: "html" //tipo de dados que será retornado
-    
-    }).done(function(resposta) {//executa caso sucesso
-        console.log(resposta);
-    
-    }).fail(function(jqXHR, textStatus ) {//executa caso falhe
-        console.log("Request failed: " + textStatus);
-    
-    }).always(function() {//executa após concluir
-        console.log("completou");
+    $.getJSON(formPHP, dados, function( data ) {
+        alert(data.msg)
+        msg.setAttribute('hidden', '')
+        msg.innerHTML = data.msg;
     });
+}
+
+function trataDados(data){
+    msg.setAttribute('hidden', '')
+    msg.innerHTML = data.msg;
 }
 
 //Validação de CPF

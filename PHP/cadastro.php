@@ -3,7 +3,6 @@ include_once "conexao.php";
 
 header("Content-type: text/html; charset=utf-8");
 
-//var_dump($_POST); // método de retorno 
 $cpf = $_POST['CPF'];
 $nome = $_POST['nome'];
 $email = $_POST['email'];
@@ -15,7 +14,12 @@ $password = $_POST['senha'];//usando password pois "senha" é usada no "conexão
 $qry = "insert into usuarios value(default, '$nome', '$cpf', '$email', '$password', default)";
 
 if(!mysqli_query($conn, $qry)){
-    die("Erro ao inserir os dados na tabela: ".mysqli_error($conn));
+    //die("Erro ao inserir os dados na tabela: ".mysqli_error($conn));
+    echo json_encode(array(
+        "msg" => "Erro ao inserir os dados na tabela: ".mysqli_error($conn)
+    ));
 }
-echo "deu certo";
+echo json_encode(array(
+    "msg" => "Deu certo, registro inserido"
+));
 ?>
