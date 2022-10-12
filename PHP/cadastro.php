@@ -3,6 +3,7 @@ include_once "conexao.php";
 
 header("Content-type: text/html; charset=utf-8");
 
+//var_dump($_POST); // método de retorno 
 $cpf = $_POST['CPF'];
 $nome = $_POST['nome'];
 $email = $_POST['email'];
