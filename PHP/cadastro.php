@@ -1,4 +1,5 @@
 <?php
+echo json_encode(array('msg' => 'Aqui');
 include_once "conexao.php";
 
 header("Content-type: text/html; charset=utf-8");
