@@ -1,21 +1,27 @@
+//Variáveis
 let bot_cadastra = document.getElementById('bot_cadastrar')
 bot_cadastra.addEventListener('click', cadastrar)
-let CPF = 0
 let dados = new FormData()
 let formPHP = "../PHP/cadastro.php"
 var msg = document.getElementById('msg')
 
+//Funções 
 function cadastrar() {
-    CPF = document.getElementById('CPF').value
-    if(Number(CPF) <= 0 ) {
-        alert(`CPF INVÁLIDO!!!`)
+    var CPF = document.getElementById('CPF').value
+    var nome = document.getElementById('nome').value
+    var senha = document.getElementById('senha').value
+    if(Number(CPF) <= 0 || nome === '' || senha.length !== 6) {
+        msg.innerHTML = `DADOS INVÁLIDOS!!!`
+        alert(`DADOS INVÁLIDOS!!!`)
     }else if(validarCPF(CPF) == false){
+        msg.innerHTML = `CPF INVÁLIDO!!!`
         alert(`CPF INVÁLIDO!!!`)
     }else {
         dados.append('cpf', CPF)
-		dados.append('nome', document.getElementById('nome').value)
-		dados.append('senha', document.getElementById('senha').value)
+		dados.append('nome', nome)
+		dados.append('senha', senha)
 		dados.append('email', document.getElementById('email').value)
+        dados.append('tipo_conta', document.getElementById('tipo_conta').value)
         enviar()
     }
 }
@@ -30,11 +36,14 @@ function enviar(){
         contentType: false,
         dataType: 'json'
         }).done(function(resposta){
-            msg.innerHTML = resposta.msg;
+            msg.innerHTML = resposta.msg
+            if (resposta.tipo === 'OK') {
+                alert(`PARABÉNS!!! VOCÊ AGORA É UM CLIENTE MOBANK\n Sua conta é: ${resposta.conta}\n Sua agência é: ${resposta.agencia}\n Com senha: ${resposta.senha}`)    
+            }
         } )
 }
 
-//Validação de CPF
+//Validação de CPF(Sim validação na controller!)
 function validarCPF(CPF) {
     var soma = 0
     var resto = 0

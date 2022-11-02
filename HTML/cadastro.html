@@ -29,6 +29,13 @@
             <input type="password" id="senha" name="senha" size="18" placeholder="deve conter 6 caracteres" maxlength="6" minlength="6" required>
             
             <br>
+            <label for="tipo_conta">Tipo de conta: </label>
+            <select name="tipo_conta" id="tipo_conta" required>
+                <option value="corrente">Corrente</option>
+                <option value="poupanca">Poupança</option>
+            </select>
+
+            <br>
             <input type="button" id="bot_cadastrar" value="Cadastrar">
             <p id="msg"></p>
             <a href="../PHP/cadastro.php"></a>
