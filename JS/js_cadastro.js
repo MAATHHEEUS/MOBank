@@ -1,7 +1,7 @@
 let bot_cadastra = document.getElementById('bot_cadastrar')
 bot_cadastra.addEventListener('click', cadastrar)
 let CPF = 0
-let dados
+let dados = new FormData()
 let formPHP = "../PHP/cadastro.php"
 var msg = document.getElementById('msg')
 
@@ -12,26 +12,26 @@ function cadastrar() {
     }else if(validarCPF(CPF) == false){
         alert(`CPF INVÁLIDO!!!`)
     }else {
-        dados = 'acao=cadastrar&cpf=' + document.getElementById('CPF').val
-        + '&nome=' + document.getElementById('nome').val
-        + '&email=' + document.getElementById('email').val
-        + '&senha=' + document.getElementById('senha').val;
+        dados.append('cpf', CPF)
+		dados.append('nome', document.getElementById('nome').value)
+		dados.append('senha', document.getElementById('senha').value)
+		dados.append('email', document.getElementById('email').value)
         enviar()
     }
 }
 
 function enviar(){
     //ajax
-    $.getJSON(formPHP, dados, function( data ) {
-        alert(data.msg)
-        msg.setAttribute('hidden', '')
-        msg.innerHTML = data.msg;
-    });
-}
-
-function trataDados(data){
-    msg.setAttribute('hidden', '')
-    msg.innerHTML = data.msg;
+    $.ajax({
+        url: formPHP,
+        method: 'post',
+        data: dados,
+        processData: false,
+        contentType: false,
+        dataType: 'json'
+        }).done(function(resposta){
+            msg.innerHTML = resposta.msg;
+        } )
 }
 
 //Validação de CPF

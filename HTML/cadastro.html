@@ -13,17 +13,28 @@
     <h2>Vamos começar!?</h2>
     <form id="form" action="../PHP/cadastro.php" method="post">
         <main>
-            <label for="CPF">CPF: </label><input type="text" id="CPF" name="CPF" placeholder="apenas números" maxlength="11" minlength="11" size="14" required><br>
-            <label for="nome">Nome completo: </label><input type="text" name="nome" id="nome" maxlength="40" size="50" placeholder="Apenas 40 caracteres" required><br>
-            <label for="e-mail">e-mail: </label><input type="email" id="email" name="email" placeholder="MObank@email.com" size="50"><br>
-            <label for="senha">Senha: </label><input type="password" id="senha" name="senha" size="18" placeholder="deve conter 6 caracteres" maxlength="6" minlength="6" required><br>
+            <label for="CPF">CPF: </label>
+            <input type="text" id="CPF" name="CPF" placeholder="apenas números" maxlength="11" minlength="11" size="14" required>
+            
+            <br>
+            <label for="nome">Nome completo: </label>
+            <input type="text" name="nome" id="nome" maxlength="40" size="50" placeholder="Apenas 40 caracteres" required>
+            
+            <br>
+            <label for="e-mail">e-mail: </label>
+            <input type="email" id="email" name="email" placeholder="MObank@email.com" size="50">
+            
+            <br>
+            <label for="senha">Senha: </label>
+            <input type="password" id="senha" name="senha" size="18" placeholder="deve conter 6 caracteres" maxlength="6" minlength="6" required>
+            
+            <br>
             <input type="button" id="bot_cadastrar" value="Cadastrar">
-            <p id="msg" hidden></p>
+            <p id="msg"></p>
             <a href="../PHP/cadastro.php"></a>
         </main>
     </form>
     <script src="../JS/js_cadastro.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <!--<script src="../JS/loadAjax.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </body>
 </html>

@@ -1,26 +1,37 @@
 <?php
-echo json_encode(array('msg' => 'Aqui');
+# Includes
 include_once "conexao.php";
 
-header("Content-type: text/html; charset=utf-8");
-
-$cpf = $_POST['CPF'];
+#Se a conexão deu errado retorna
+if($conect == false){
+    echo json_encode(array(
+        'tipo' => 'E',
+        'msg' => $error
+    ));
+    return;
+}
+#Recece os dados do form
+$cpf = $_POST['cpf'];
 $nome = $_POST['nome'];
 $email = $_POST['email'];
-if($email === ''){//se o email não for informado coloca o padrão
+if($email === ''){
     $email = 'MOBANK@email.com';
 }
-$password = $_POST['senha'];//usando password pois "senha" é usada no "conexão.php"
+$password = $_POST['senha'];
 
-$qry = "insert into usuarios value(default, '$nome', '$cpf', '$email', '$password', default)";
+#qry de Inserção
+$qry = "INSERT INTO usuarios VALUES(default, '$nome', '$cpf', '$email', '$password', default)";
 
-if(!mysqli_query($conn, $qry)){
-    //die("Erro ao inserir os dados na tabela: ".mysqli_error($conn));
+#Excuta e testa execução da qry
+if (!mysqli_query($conn, $qry)){
     echo json_encode(array(
-        "msg" => "Erro ao inserir os dados na tabela: ".mysqli_error($conn)
+        'tipo' => 'E',
+        'msg' => "Erro ao inserir as informações do usuário: " . mysqli_error($conn)
     ));
+	return;
 }
 echo json_encode(array(
-    "msg" => "Deu certo, registro inserido"
+    'tipo' => 'OK',
+    'msg' => "Dados cadastrados com sucesso"
 ));
-?>
+return;

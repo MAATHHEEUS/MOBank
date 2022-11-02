@@ -1,11 +1,11 @@
 //Variáveis
 bot_acessar = document.getElementById('bot_acessar')
-bot_cadastra = document.getElementById('bot_cadastrar')
+bot_acessar.addEventListener('click', validar)
 let agencia = 0
 let conta = 0
 let senha = 0
-bot_acessar.addEventListener('click', validar)
-bot_cadastra.addEventListener('click', cadastrar)
+let dados = new FormData()
+let formPHP = "../PHP/index.php"
 
 //funções
 function validar() {// validar se o cliente digitou corretamente e se o mesmo existe
@@ -15,11 +15,37 @@ function validar() {// validar se o cliente digitou corretamente e se o mesmo ex
     if(Number(agencia) <= 0 || Number(conta) <= 0) {
         alert('Agência ou Conta Inválidos!')
     }else{
-        //if(VALIDAR SE CLIENTE EXISTE NO BANCO DE DADOS) {}
-        //if(VALIDAR SE SENHA ESTÁ CORRETA) {}
-        alert('Tudo OK!')
-        //ir para pag iframe
-        open("../HTML/frame.html","self")
+        //VALIDAR SE CLIENTE EXISTE NO BANCO DE DADOS E SENHA CORRETA
+        buscaCliente(agencia, conta, senha)    
     }
-    
+}
+
+function buscaCliente(agencia, conta, senha){
+    dados.append('agencia', agencia)
+    dados.append('conta', conta)
+    dados.append('senha', senha)
+    dados.append('acao', 'buscaCliente')
+    enviar()
+}
+
+function enviar(){
+//ajax
+$.ajax({
+    url: formPHP,
+    method: 'post',
+    data: dados,
+    processData: false,
+    contentType: false,
+    dataType: 'json'
+    }).done(function(resposta){
+        msg.innerHTML = resposta.msg
+        if (resposta.tipo === 'E') {
+            alert(resposta.msg)
+        }
+        else{
+            alert('Tudo OK!')
+            //ir para pag iframe
+            open("../HTML/frame.html","self")
+        }
+    } )
 }
