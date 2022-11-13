@@ -39,8 +39,10 @@ $id_usuario = mysqli_insert_id($conn);
 
 #Se deu certo cadastra uma conta para o usuário e um acesso
 $qry = "INSERT INTO contas VALUES(default, '$tipo_conta', '$agencia', default)";
+
 #Executa consulta
 mysqli_query($conn, $qry);
+
 #Pega o id_conta retornado do insert
 $id_conta = mysqli_insert_id($conn);
 

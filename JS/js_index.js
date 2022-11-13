@@ -46,6 +46,14 @@ $.ajax({
             alert('Tudo OK!')
             //ir para pag iframe
             open("../HTML/frame.html","self")
+            // salva os dados no dadosLocais (LocalStorage)
+            var dadosLocais = JSON.stringify({
+                nome : resposta.nome,
+                saldo : resposta.saldo,
+                id : resposta.id_conta
+            });
+            localStorage.setItem("storage", JSON.stringify(dadosLocais));
+            return true;
         }
     } )
 }

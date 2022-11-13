@@ -68,3 +68,8 @@ div#saldo {
 a:link {
     color: rgba(83, 196, 83, 0.849);
 }
+
+.icon {
+    height: 18px;
+    width: 18px;
+}

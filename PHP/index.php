@@ -18,7 +18,7 @@ $acao = $_POST['acao'];
 
 if($acao == 'buscaCliente'){
     #qry de Busca
-    $qry = "SELECT u.senha, c.id_conta, c.agencia
+    $qry = "SELECT u.senha, u.nome, c.id_conta, c.agencia, c.saldo
     FROM contas c JOIN acessos a ON c.id_conta = a.conta
     JOIN usuarios u ON u.id_usuario = a.usuario_id
     WHERE c.id_conta = '$conta' AND c.agencia = '$agencia' AND u.senha = '$password'";
@@ -36,7 +36,8 @@ if($acao == 'buscaCliente'){
     }
 
     #Recebe e verifica se retornou algum usuário
-    if($resultado->fetch_row() === null){
+    $row = mysqli_fetch_assoc($resultado);
+    if($row === null){
         echo json_encode(array(
             'tipo' => 'E',
             'msg' => "Dados não encontrados, verifique os dados digitados!"
@@ -45,7 +46,10 @@ if($acao == 'buscaCliente'){
     }
     echo json_encode(array(
         'tipo' => 'OK',
-        'msg' => "Cliente OK"
+        'msg' => "Cliente OK",
+        'nome' => $row['nome'],
+        'saldo' => $row['saldo'],
+        'id_conta' => $row['id_conta']
     ));
     return;
 }
