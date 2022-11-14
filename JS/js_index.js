@@ -4,7 +4,6 @@ bot_acessar.addEventListener('click', validar)
 let agencia = 0
 let conta = 0
 let senha = 0
-let dados = new FormData()
 let formPHP = "../PHP/index.php"
 
 //funções
@@ -21,14 +20,15 @@ function validar() {// validar se o cliente digitou corretamente e se o mesmo ex
 }
 
 function buscaCliente(agencia, conta, senha){
+    var dados = new FormData()
     dados.append('agencia', agencia)
     dados.append('conta', conta)
     dados.append('senha', senha)
     dados.append('acao', 'buscaCliente')
-    enviar()
+    enviar(dados)
 }
 
-function enviar(){
+function enviar(dados){
 //ajax
 $.ajax({
     url: formPHP,
@@ -45,7 +45,7 @@ $.ajax({
         else{
             alert('Tudo OK!')
             //ir para pag iframe
-            open("../HTML/frame.html","self")
+            open("../HTML/frame.html","_self")
             // salva os dados no dadosLocais (LocalStorage)
             var dadosLocais = JSON.stringify({
                 nome : resposta.nome,
@@ -53,7 +53,6 @@ $.ajax({
                 id : resposta.id_conta
             });
             localStorage.setItem("storage", JSON.stringify(dadosLocais));
-            return true;
         }
     } )
 }

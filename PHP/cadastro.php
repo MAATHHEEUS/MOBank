@@ -47,6 +47,7 @@ mysqli_query($conn, $qry);
 $id_conta = mysqli_insert_id($conn);
 
 $qry = "INSERT INTO acessos VALUES(default, '$id_usuario', '$id_conta')";
+mysqli_query($conn, $qry);
 
 echo json_encode(array(
     'tipo' => 'OK',

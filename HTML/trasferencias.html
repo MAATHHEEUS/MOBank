@@ -20,16 +20,27 @@
             <option value="itau">341 - Itaú</option>
             <option value="nu">260 - Nubank</option>
         </select>
+
         <br><br>
         <label for="agencia">Agência: </label><input type="text" id="agencia" placeholder="Agência sem dígito" maxlength="4" size="10" required><br>
+
         <label for="conta">Conta: </label><input type="text" id="conta" placeholder="Conta com dígito" maxlength="6" size="13" required><br>
+
         <label for="tipoConta">Tipo de conta: </label>
-        <input type="radio" value="corrente" id="corrente" name="tipoConta" checked><label for="corrente">Corrente</label>
-        <input type="radio" name="tipoConta" id="poupanca" value="poupanca"><label for="poupanca">Poupança</label>
+        <input type="radio" value="corrente" id="corrente" name="tipoConta" checked>
+        <label for="corrente">Corrente</label>
+
+        <input type="radio" name="tipoConta" id="poupanca" value="poupanca">
+        <label for="poupanca">Poupança</label>
+
         <br>
         <label for="valor">Valor R$ </label><input type="number" name="valor" id="valor" min="0.00" required value="0.00"><br>
+
         <label for="senha">Senha: </label><input type="password" id="senha" maxlength="6" size="7"><br>
-        <input type="submit" value="Trasferir">
+
+        <input type="button" value="Transferir" id="bot_transferir">
+        <p id="msg"></p> 
     </form>
+    <script src="../JS/js_transferencias.js"></script>
 </body>
 </html>

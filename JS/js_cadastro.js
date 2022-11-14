@@ -38,7 +38,9 @@ function enviar(){
         }).done(function(resposta){
             msg.innerHTML = resposta.msg
             if (resposta.tipo === 'OK') {
-                alert(`PARABÉNS!!! VOCÊ AGORA É UM CLIENTE MOBANK\n Sua conta é: ${resposta.conta}\n Sua agência é: ${resposta.agencia}\n Com senha: ${resposta.senha}`)    
+                alert(`PARABÉNS!!! VOCÊ AGORA É UM CLIENTE MOBANK\n Sua conta é: ${resposta.conta}\n Sua agência é: ${resposta.agencia}\n Com senha: ${resposta.senha}`)
+                // Volta para pagina de login
+                open("../HTML/index.html","_self")    
             }
         } )
 }
