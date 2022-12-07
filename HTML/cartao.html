@@ -10,11 +10,33 @@
 </head>
 <body>
     <h2>Cartões</h2>
-    <label for="seus">Seus Cartões: </label><br>
-    <input type="radio" name="cartao" id="cartao" value="xxx"><label for="xxx">Cartão x</label><br>
-    <input type="radio" name="cartao" id="cartao" value="yyy"><label for="yyy">Cartão y</label><br>
-    <label for="senha">Senha: </label><input type="password" name="senha" id="senha" size="7" maxlength="6"><br>
-    <input type="button" name="botDetalhes" id="botDetalhes" value="Ver detalhes"><br>
+    <label for="seus">Seus Cartões: </label>
+    
+    <br>
+    <div id="grid" hidden></div>
+
+    <br>
+    <input type="button" name="botDetalhes" id="botDetalhes" value="Ver detalhes">
+    
+    <br>
     <input type="button" name="botNovo" id="botNovo" value="Solicitar novo">
+
+    <div id="cad" hidden>
+        <br>
+        <input type="radio" name="tipoCartao" id="credito" value="credito">
+        <label for="credito">Crédito</label>
+        
+        <br>
+        <input type="radio" name="tipoCartao" id="debito" value="debito">
+        <label for="debito">Débito</label>
+        
+        <br>
+        <label for="senha">Senha:(6 dígitos) </label>
+        <input type="password" name="senha" id="senha" size="7" maxlength="6" minlength="6">
+    
+        <br>
+        <input type="button" name="bot_transferir" id="bot_transferir" value="OK">
+    </div>
+    <script src="../JS/js_cartao.js"></script>
 </body>
 </html>

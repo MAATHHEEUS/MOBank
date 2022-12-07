@@ -20,20 +20,37 @@
             <option value="aleatorio">Chave aleatória</option>
             <option value="copiaCola">Copia e cola</option>
         </select>
-        <br><br>
+
+        <!-- <br><br>
         <label for="contato">Escolher um contato:</label>
         <select name="contato" id="contato">
             <optgroup label="Seus contatos">
-                <option value=""></option><!--Pegar os contatos no banco de dados (se houver)-->
+                <option value=""></option> 'Pegar os contatos no banco de dados (se houver)'
             </optgroup>
-        </select>
+        </select> -->
+
         <br><br>
-        <label for="valor">Valor R$ </label><input type="number" name="valor" id="valor" min="00.00" value="00.00" required><br>
-        <label for="desc">Descrição</label><input type="text" name="desc" id="desc" placeholder="Opcional"><br>
-        <label for="chave">Chave: </label><input type="text" name="chave" id="chave" required><br>
-        <input type="checkbox" name="adicionaContato" id="adicionaContato"><label for="adicionaContato">Adicionar chave aos contatos</label><br>
-        <label for="senha">Senha: </label><input type="password" id="senha" maxlength="6" size="7"><br>
-        <input type="submit" value="Trasferir">
+        <label for="valor">Valor R$ </label>
+        <input type="number" name="valor" id="valor" min="00.00" value="00.00" required>
+        
+        <br>
+        <label for="desc">Descrição</label>
+        <input type="text" name="desc" id="desc" placeholder="Opcional">
+        
+        <br>
+        <label for="chave">Chave: </label>
+        <input type="text" name="chave" id="chave" required>
+        
+        <br>
+        <input type="checkbox" name="adicionaContato" id="adicionaContato">
+        <label for="adicionaContato">Adicionar chave aos contatos</label>
+        
+        <br>
+        <label for="senha">Senha: </label>
+        <input type="password" id="senha" maxlength="6" size="7"><br>
+        
+        <input type="button" value="Trasferir"  id="bot_transferir">
     </form>
+    <script src="../JS/js_pix.js"></script>
 </body>
 </html>

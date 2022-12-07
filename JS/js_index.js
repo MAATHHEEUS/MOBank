@@ -41,6 +41,7 @@ $.ajax({
         msg.innerHTML = resposta.msg
         if (resposta.tipo === 'E') {
             alert(resposta.msg)
+            return
         }
         else{
             alert('Tudo OK!')
