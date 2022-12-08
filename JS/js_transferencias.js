@@ -10,7 +10,7 @@ var parse = JSON.parse(registro);
 var obj = JSON.parse(parse);
 
 var id_conta = obj.id
-var saldo = obj.saldo.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL'})
+var saldo = obj.saldo
 
 //Funções 
 function transferir() {

@@ -10,7 +10,9 @@ var obj = JSON.parse(parse);
 //Prenche o nome do cliente e o saldo no html
 var linhasaldo = document.getElementById('valorsaldo')
 var nome = document.getElementById('nome')
-linhasaldo.innerText = `saldo R$ ${obj.saldo}`
+// Formata saldo em Moeda(R$)
+var saldoFormat = obj.saldo.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+linhasaldo.innerText = `saldo R$ ${saldoFormat}`
 nome.innerText = `Olá, ${obj.nome}`
 
 // Armazena o saldo do cliente para não perder a informação
@@ -21,7 +23,7 @@ var id_conta = obj.id
 function mostrasaldo() {
     linhasaldo = document.getElementById('valorsaldo')
     if (linhasaldo.innerText === "saldo R$ xxx,xx") {
-        linhasaldo.innerText = `saldo R$ ${saldo.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL'})}`// Formata em Moeda(R$)
+        linhasaldo.innerText = `saldo R$ ${saldoFormat}`
         return
     }else {
         linhasaldo.innerText = "saldo R$ xxx,xx"
