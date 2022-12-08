@@ -66,6 +66,7 @@ function enviar(dados){
                         break
 
                     case 'carregaCartoes':
+                        document.getElementById('grid').removeAttribute("hidden")
                         $('#grid').html(resposta.grid)
                         break    
                 }

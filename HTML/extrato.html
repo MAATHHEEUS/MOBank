@@ -10,19 +10,26 @@
 </head>
 <body>
     <h2>Extrato</h2>
+
     <label for="periodo">Escolha o período: </label>
     <select name="periodo" id="periodo">
-        <option value="tresDias">3 dias</option>
-        <option value="dezDias">10 dias</option>
-        <option value="umMes">1 mês</option>
-        <option value="tresMes">3 meses</option>
+        <option value="1">3 dias</option>
+        <option value="2">10 dias</option>
+        <option value="3">1 mês</option>
+        <option value="4">3 meses</option>
     </select>
+    
     <br><br>
-    <label for="tipoConta">Qual conta: </label>
-    <input type="radio" value="corrente" id="corrente" name="tipoConta" checked><label for="corrente">Corrente</label>
-    <input type="radio" name="tipoConta" id="poupanca" value="poupanca"><label for="poupanca">Poupança</label>
-    <br>
     <input type="button" name="gerar" id="gerar" value="Gerar extrato">
-    <p>//DETALHAR O EXTRADO</p>
+
+    <br>
+    <div id="gridTransferencias" hidden></div>
+
+    <br>
+    <div id="gridPix" hidden></div>
+
+    <br>
+    <div id="gridBoletos" hidden></div>
+    <script src="../JS/js_extrato.js"></script>
 </body>
 </html>
