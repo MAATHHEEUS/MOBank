@@ -62,6 +62,15 @@ if($acao == 'cad_transferir'){
     $id_conta = $_POST['id_conta'];
     $saldo_atual = $_POST['saldo_atual'];
 
+    # Se a conta de destino for MOBank tem que existir no Banco
+    if ($banco == 'mo') {
+        $res = verificaContaMO($conta, $agencia, $conn);
+        if ($res['tipo'] == 'E') {
+            echo json_encode($res);
+            return;
+        }
+    }
+
     # Verifica se existe a conta de destino no banco
     $qry = "SELECT * FROM destinos WHERE tipo_conta_dest = '$tipoConta' 
     AND agencia_dest = '$agencia'
@@ -97,7 +106,7 @@ if($acao == 'cad_transferir'){
 
     # Se a conta de destino for MOBank atualiza o saldo da conta de destino
     if ($banco == 'mo') {
-        atualizaSaldoContaMO($conta, $agencia, $valor);
+        atualizaSaldoContaMO($conta, $agencia, $valor, $conn);
     }
 
     $novoSaldo = $saldo_atual - $valor;
@@ -116,7 +125,7 @@ if($acao == 'cad_transferir'){
     return;
 }
 
-function atualizaSaldoContaMO($conta, $agencia, $valor) {
+function atualizaSaldoContaMO($conta, $agencia, $valor, $conn) {
     # Busca conta
     $qry = "SELECT * FROM contas WHERE id_conta = '$conta' AND agencia = '$agencia'";
 
@@ -126,10 +135,33 @@ function atualizaSaldoContaMO($conta, $agencia, $valor) {
 
     $novoSaldo = $valor + $row['saldo'];
     # Atualiza o saldo
-    $qry = "UPDATE contas SET saldo = $novoSaldo WHERE id_conta = '$row['id_conta']'"
+    $qry = "UPDATE contas SET saldo = $novoSaldo WHERE id_conta = $conta";
     
     #Executa a query
     mysqli_query($conn, $qry);
 
     return;
+}
+
+function verificaContaMO($conta, $agencia, $conn) {
+    # Busca conta
+    $qry = "SELECT * FROM contas WHERE id_conta = '$conta' AND agencia = '$agencia'";
+
+    #Executa a query
+    $resultado = mysqli_query($conn, $qry);
+
+    $row = mysqli_fetch_assoc($resultado);
+
+    #Testa execução da qry e se a conta existe
+    if (!$resultado || $row == null){   
+        return(array(
+            'tipo' => 'E',
+            'msg' => "Erro ao recuperar os dados da conta MObank de destino: " . mysqli_error($conn)
+        ));
+    }
+    else {
+        return(array(
+            'tipo' => 'OK'
+        ));   
+    }
 }

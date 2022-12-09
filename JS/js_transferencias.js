@@ -9,8 +9,8 @@ var registro = localStorage.getItem("storage");
 var parse = JSON.parse(registro);
 var obj = JSON.parse(parse);
 
-var id_conta = obj.id
-var saldo = obj.saldo
+var id_conta = Number(obj.id)
+var saldo = Number(obj.saldo)
 
 //Funções 
 function transferir() {
@@ -22,13 +22,16 @@ function transferir() {
 
     if(Number(agencia) <= 0 || Number(conta) <= 0 || Number(valor) <= 0 || Number(senha) <= 0) {
         alert('Dados digitados Inválidos!')
+        return
     }
 
     if(valor > saldo) {
         alert('Saldo insuficiente!')
+        return
     }
 
     validaSenha()
+    return
 }
 
 function validaSenha() {
@@ -38,6 +41,7 @@ function validaSenha() {
     dados.append('senha', senha)
     dados.append('id_conta', id_conta)
     enviar(dados)
+    return
 }
 
 function cad_transferir() {
@@ -58,6 +62,7 @@ function cad_transferir() {
     dados.append('id_conta', id_conta)
     dados.append('saldo_atual', saldo)
     enviar(dados)
+    return
 }
 
 function enviar(dados){
@@ -83,11 +88,11 @@ function enviar(dados){
                 
                     case 'cad_transferir':
                         alert('Transferencia efetuada, Nº: ' + resposta.id_transferecia)
-                        //ir para pag iframe
-                        open("../HTML/frame.html","_self")
+                        //volta para pag principal
+                        open("../HTML/principal.html","corpo")
                         // salva os dados no dadosLocais (LocalStorage)
                         var dadosLocais = JSON.stringify({
-                            saldo : resposta.saldo,
+                            saldo : resposta.novo_saldo,
                             id : id_conta
                         });
                         localStorage.setItem("storage", JSON.stringify(dadosLocais));
@@ -95,4 +100,5 @@ function enviar(dados){
                 }
             }
         } )
+        return
 }

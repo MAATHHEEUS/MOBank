@@ -10,20 +10,28 @@ var obj = JSON.parse(parse);
 //Prenche o nome do cliente e o saldo no html
 var linhasaldo = document.getElementById('valorsaldo')
 var nome = document.getElementById('nome')
+var saldo = Number(obj.saldo)
 // Formata saldo em Moeda(R$)
-var saldoFormat = obj.saldo.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
-linhasaldo.innerText = `saldo R$ ${saldoFormat}`
+var saldoFormat = saldo.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+linhasaldo.innerText = `saldo ${saldoFormat}`
 nome.innerText = `Olá, ${obj.nome}`
 
-// Armazena o saldo do cliente para não perder a informação
-var saldo = obj.saldo
-var id_conta = obj.id
+var id_conta = Number(obj.id)
 
 // Função que esconde ou mostra o saldo
 function mostrasaldo() {
     linhasaldo = document.getElementById('valorsaldo')
+
+    //Pega os dados salvos no dadosLocais (LocalStorage)
+    registro = localStorage.getItem("storage");
+    parse = JSON.parse(registro);
+    obj = JSON.parse(parse);
+    
+    saldo = Number(obj.saldo)
+    // Formata saldo em Moeda(R$)
+    saldoFormat = saldo.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
     if (linhasaldo.innerText === "saldo R$ xxx,xx") {
-        linhasaldo.innerText = `saldo R$ ${saldoFormat}`
+        linhasaldo.innerText = `saldo ${saldoFormat}`
         return
     }else {
         linhasaldo.innerText = "saldo R$ xxx,xx"
