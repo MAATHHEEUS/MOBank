@@ -9,8 +9,8 @@ var registro = localStorage.getItem("storage");
 var parse = JSON.parse(registro);
 var obj = JSON.parse(parse);
 
-var id_conta = obj.id
-var saldo = obj.saldo.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL'})
+var id_conta = Number(obj.id)
+var saldo = Number(obj.saldo)
 
 //Funções 
 function transferir() {
@@ -56,7 +56,7 @@ function enviar(dados){
                     case 'cad_transferir':
                         alert('Numero do cartão solicitado: ' + resposta.numeroCartao)
                         //ir para pag iframe
-                        open("../HTML/frame.html","_self")
+                        open("../HTML/principal.html","corpo")
                         // salva os dados no dadosLocais (LocalStorage)
                         var dadosLocais = JSON.stringify({
                             saldo : resposta.saldo,

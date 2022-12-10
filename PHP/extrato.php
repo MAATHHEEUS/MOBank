@@ -20,15 +20,19 @@ if($acao == 'cad_transferir'){
     switch ($periodo) {
         case '1':
             $data = new DateTime(' -3 days');
+            $data = $data->format('Y-m-d');
             break;
-        case '1':
+        case '2':
             $data = new DateTime(' -10 days');
+            $data = $data->format('Y-m-d');
             break;
-        case '1':
+        case '3':
             $data = new DateTime(' -1 month');
+            $data = $data->format('Y-m-d');
             break;
-        case '1':
+        case '4':
             $data = new DateTime(' -3 month');
+            $data = $data->format('Y-m-d');
             break;
     }
     
@@ -44,36 +48,24 @@ if($acao == 'cad_transferir'){
             'msg' => "Erro ao consultar os investimentos. " . mysqli_error($conn)
         ));
         return;
-        break;
-    }
-
-    # Verifica se retornou linhas
-    $qntd = mysqli_num_rows($resultset);
-    if ($qntd < 0) {
-        echo json_encode(array(
-            'tipo' => 'E',
-            'msg' => "Erro: Nenhum investimento cadastrado para esse cliente!"
-        ));
-        return;
-        break;
     }
 
     # Monta a gridTransferencias de consulta
-    $gridTransferencias = "<table class='table table-holver table-striped table-bordered'>";
+    $gridTransferencias = "<h4 align='center'>Transferências</h4><table class='table table-holver table-striped table-bordered' style='border: 1px solid green;'>";
     $gridTransferencias .= "<tr>";
-    $gridTransferencias .= "<th>#</th>";
-    $gridTransferencias .= "<th>Valor</th>";
-    $gridTransferencias .= "<th>Data</th>";
-    $gridTransferencias .= "<th colspan='3'>Destinatário</th>";
+    $gridTransferencias .= "<th style='border: 1px solid green;'>#</th>";
+    $gridTransferencias .= "<th style='border: 1px solid green;'>Valor</th>";
+    $gridTransferencias .= "<th style='border: 1px solid green;'>Data</th>";
+    $gridTransferencias .= "<th colspan='3' style='border: 1px solid green;'>Destinatário</th>";
     $gridTransferencias .= "</tr>";
     while($row = mysqli_fetch_assoc($resultset)){
         $gridTransferencias .= "<tr>";
-        $gridTransferencias .= "<td>".$row['id_transf']."</td>";
-        $gridTransferencias .= "<td>".$row['valor']."</td>";
-        $gridTransferencias .= "<td>".$row['dt_transf']."</td>";
-        $gridTransferencias .= "<td>".$row['agencia_dest']."</td>";
-        $gridTransferencias .= "<td>".$row['conta_dest']."</td>";
-        $gridTransferencias .= "<td>".$row['banco_dest']."</td>";
+        $gridTransferencias .= "<td style='border: 1px solid green;'>".$row['id_transf']."</td>";
+        $gridTransferencias .= "<td style='border: 1px solid green;'>".$row['valor']."</td>";
+        $gridTransferencias .= "<td style='border: 1px solid green;'>".$row['dt_transf']."</td>";
+        $gridTransferencias .= "<td style='border: 1px solid green;'>".$row['agencia_dest']."</td>";
+        $gridTransferencias .= "<td style='border: 1px solid green;'>".$row['conta_dest']."</td>";
+        $gridTransferencias .= "<td style='border: 1px solid green;'>".$row['banco_dest']."</td>";
         $gridTransferencias .= "</tr>";
     }
     $gridTransferencias .= "</tr>";
@@ -91,36 +83,24 @@ if($acao == 'cad_transferir'){
             'msg' => "Erro ao consultar os pix. " . mysqli_error($conn)
         ));
         return;
-        break;
-    }
-
-    # Verifica se retornou linhas
-    $qntd = mysqli_num_rows($resultset);
-    if ($qntd < 0) {
-        echo json_encode(array(
-            'tipo' => 'E',
-            'msg' => "Erro: Nenhum pix para esse cliente!"
-        ));
-        return;
-        break;
     }
 
     # Monta a gridPix de consulta
-    $gridPix = "<table class='table table-holver table-striped table-bordered'>";
-    $gridPix .= "<tr>";
-    $gridPix .= "<th>#</th>";
-    $gridPix .= "<th>Valor</th>";
-    $gridPix .= "<th>Data</th>";
-    $gridPix .= "<th>Descrição</th>";
-    $gridPix .= "<th>Destino(Chave)</th>";
+    $gridPix = "<h4 align='center'>Pix</h4><table class='table table-holver table-striped table-bordered' style='border: 1px solid green;'>";
+    $gridPix .= "<tr style='border: 1px solid green;'>";
+    $gridPix .= "<th style='border: 1px solid green;'>#</th>";
+    $gridPix .= "<th style='border: 1px solid green;'>Valor</th>";
+    $gridPix .= "<th style='border: 1px solid green;'>Data</th>";
+    $gridPix .= "<th style='border: 1px solid green;'>Descrição</th>";
+    $gridPix .= "<th style='border: 1px solid green;'>Destino(Chave)</th>";
     $gridPix .= "</tr>";
     while($row = mysqli_fetch_assoc($resultset)){
-        $gridPix .= "<tr>";
-        $gridPix .= "<td>".$row['id_pix']."</td>";
-        $gridPix .= "<td>".$row['valor']."</td>";
-        $gridPix .= "<td>".$row['dt_pix']."</td>";
-        $gridPix .= "<td>".$row['descricao']."</td>";
-        $gridPix .= "<td>".$row['chave_destino']."</td>";
+        $gridPix .= "<tr style='border: 1px solid green;'>";
+        $gridPix .= "<td style='border: 1px solid green;'>".$row['id_pix']."</td>";
+        $gridPix .= "<td style='border: 1px solid green;'>".$row['valor']."</td>";
+        $gridPix .= "<td style='border: 1px solid green;'>".$row['dt_pix']."</td>";
+        $gridPix .= "<td style='border: 1px solid green;'>".$row['descricao']."</td>";
+        $gridPix .= "<td style='border: 1px solid green;'>".$row['chave_destino']."</td>";
         $gridPix .= "</tr>";
     }
     $gridPix .= "</tr>";
@@ -138,36 +118,24 @@ if($acao == 'cad_transferir'){
             'msg' => "Erro ao consultar os boletos. " . mysqli_error($conn)
         ));
         return;
-        break;
-    }
-
-    # Verifica se retornou linhas
-    $qntd = mysqli_num_rows($resultset);
-    if ($qntd < 0) {
-        echo json_encode(array(
-            'tipo' => 'E',
-            'msg' => "Erro: Nenhum boleto para esse cliente!"
-        ));
-        return;
-        break;
     }
 
     # Monta a gridBoletos de consulta
-    $gridBoletos = "<table class='table table-holver table-striped table-bordered'>";
-    $gridBoletos .= "<tr>";
-    $gridBoletos .= "<th>#</th>";
-    $gridBoletos .= "<th>Cód. Barras</th>";
-    $gridBoletos .= "<th>Data</th>";
-    $gridBoletos .= "<th colspan='3'>Destinatário</th>";
+    $gridBoletos = "<h4 align='center'>Boletos</h4><table class='table table-holver table-striped table-bordered' style='border: 1px solid green;'>";
+    $gridBoletos .= "<tr style='border: 1px solid green;'>";
+    $gridBoletos .= "<th style='border: 1px solid green;'>#</th>";
+    $gridBoletos .= "<th style='border: 1px solid green;'>Cód. Barras</th>";
+    $gridBoletos .= "<th style='border: 1px solid green;'>Data</th>";
+    $gridBoletos .= "<th colspan='3' style='border: 1px solid green;'>Destinatário</th>";
     $gridBoletos .= "</tr>";
     while($row = mysqli_fetch_assoc($resultset)){
-        $gridBoletos .= "<tr>";
-        $gridBoletos .= "<td>".$row['id_boleto']."</td>";
-        $gridBoletos .= "<td>".$row['cod_barras']."</td>";
-        $gridBoletos .= "<td>".$row['dt_pag']."</td>";
-        $gridBoletos .= "<td>".$row['agencia_dest']."</td>";
-        $gridBoletos .= "<td>".$row['conta_dest']."</td>";
-        $gridBoletos .= "<td>".$row['banco_dest']."</td>";
+        $gridBoletos .= "<tr style='border: 1px solid green;'>";
+        $gridBoletos .= "<td style='border: 1px solid green;'>".$row['id_boleto']."</td>";
+        $gridBoletos .= "<td style='border: 1px solid green;'>".$row['cod_barras']."</td>";
+        $gridBoletos .= "<td style='border: 1px solid green;'>".$row['dt_pag']."</td>";
+        $gridBoletos .= "<td style='border: 1px solid green;'>".$row['agencia_dest']."</td>";
+        $gridBoletos .= "<td style='border: 1px solid green;'>".$row['conta_dest']."</td>";
+        $gridBoletos .= "<td style='border: 1px solid green;'>".$row['banco_dest']."</td>";
         $gridBoletos .= "</tr>";
     }
     $gridBoletos .= "</tr>";

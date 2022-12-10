@@ -44,7 +44,6 @@ $.ajax({
             return
         }
         else{
-            alert('Tudo OK!')
             //ir para pag iframe
             open("../HTML/frame.html","_self")
             // salva os dados no dadosLocais (LocalStorage)

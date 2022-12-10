@@ -54,7 +54,7 @@ if($acao == 'validarSenha'){
 
 if($acao == 'cad_transferir'){
     $tipoChave = $_POST['tipoChave'];
-    $contato = $_POST['contato'];
+    // $contato = $_POST['contato'];
     $desc = $_POST['desc'];
     $adicionaContato = $_POST['adicionaContato'];
     $valor = $_POST['valor'];
@@ -64,11 +64,11 @@ if($acao == 'cad_transferir'){
     $saldo_atual = $_POST['saldo_atual'];
 
     #Cadastra um pix
-    $qry = "INSERT INTO `pix`(`id_pix`, `conta`, `chave_destino`, `descricao`, `valor`, `dt_pix`) VALUES (default,$id_conta,$chave,$desc,$valor,default)";
+    $qry = "INSERT INTO `pix`(`id_pix`, `conta`, `chave_destino`, `descricao`, `valor`, `dt_pix`) VALUES (default,$id_conta,$chave,'$desc',$valor,default)";
 
     #Executa query
     mysqli_query($conn, $qry);
-
+    
     #Pega o id_pix retornado do insert
     $id_pix = mysqli_insert_id($conn);
 
@@ -83,7 +83,7 @@ if($acao == 'cad_transferir'){
     ////EM DESENVOLVIMENTO!!!
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     # Adiciona o contato se solicitado
-    // if ($adicionaContato) {
+    // if ($adicionaContato == 'on') {
     //     $qry = "INSERT INTO contatos VALUES(default, '$tipoConta', $agencia, $conta, '$banco')";
 
     //     #Executa query
@@ -93,7 +93,7 @@ if($acao == 'cad_transferir'){
     echo json_encode(array(
         'tipo' => 'OK',
         'msg' => "Dados cadastrados com sucesso",
-        'id_transferecia' => $id_pix,
+        'id_pix' => $id_pix,
         'novo_saldo' => $novoSaldo
     ));
     return;

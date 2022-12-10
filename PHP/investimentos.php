@@ -28,7 +28,6 @@ if($acao == 'cad_transferir'){
             'msg' => "Erro ao consultar os investimentos. " . mysqli_error($conn)
         ));
         return;
-        break;
     }
 
     # Verifica se retornou linhas
@@ -39,27 +38,26 @@ if($acao == 'cad_transferir'){
             'msg' => "Erro: Nenhum investimento cadastrado para esse cliente!"
         ));
         return;
-        break;
     }
 
     # Monta a grid de consulta
-    $grid = "<table class='table table-holver table-striped table-bordered'>";
+    $grid = "<table class='table table-holver table-striped table-bordered' style='border: 1px solid green;'>";
     $grid .= "<tr>";
-    $grid .= "<th>#</th>";
-    $grid .= "<th>Valor</th>";
-    $grid .= "<th>Data</th>";
-    $grid .= "<th>Rendimento</th>";
-    $grid .= "<th>%</th>";
-    $grid .= "<th>Origem</th>";
+    $grid .= "<th style='border: 1px solid green;'>#</th>";
+    $grid .= "<th style='border: 1px solid green;'>Valor</th>";
+    $grid .= "<th style='border: 1px solid green;'>Data</th>";
+    $grid .= "<th style='border: 1px solid green;'>Rendimento</th>";
+    $grid .= "<th style='border: 1px solid green;'>%</th>";
+    $grid .= "<th style='border: 1px solid green;'>Origem</th>";
     $grid .= "</tr>";
     while($row = mysqli_fetch_assoc($resultset)){
         $grid .= "<tr>";
-        $grid .= "<td>".$row['id_investimento']."</td>";
-        $grid .= "<td>".$row['valor']."</td>";
-        $grid .= "<td>".$row['dt_invest']."</td>";
-        $grid .= "<td>".$row['rendimento']."</td>";
-        $grid .= "<td>".$row['percentual_rend']."</td>";
-        $grid .= "<td>".$row['tipo_invest']."</td>";
+        $grid .= "<td style='border: 1px solid green;'>".$row['id_investimento']."</td>";
+        $grid .= "<td style='border: 1px solid green;'>".$row['valor']."</td>";
+        $grid .= "<td style='border: 1px solid green;'>".$row['dt_invest']."</td>";
+        $grid .= "<td style='border: 1px solid green;'>".$row['rendimento']."</td>";
+        $grid .= "<td style='border: 1px solid green;'>".$row['percentual_rend']."</td>";
+        $grid .= "<td style='border: 1px solid green;'>".$row['tipo_invest']."</td>";
         $grid .= "</tr>";
     }
     $grid .= "</tr>";

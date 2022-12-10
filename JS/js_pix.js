@@ -9,8 +9,8 @@ var registro = localStorage.getItem("storage");
 var parse = JSON.parse(registro);
 var obj = JSON.parse(parse);
 
-var id_conta = obj.id
-var saldo = obj.saldo.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL'})
+var id_conta = Number(obj.id)
+var saldo = Number(obj.saldo)
 
 //Funções 
 function transferir() {
@@ -30,6 +30,34 @@ function transferir() {
         return
     }
 
+    switch (tipoChave) {
+        case 'doc':
+            if(!validarCPF(chave)){
+                alert("Chave digitada está incorreta, digite um CPF válido!")
+                return
+            }
+            break;
+
+        case 'cel':
+            if(chave.length < 11){
+                alert("Chave digitada está incorreta, deve haver 11 dígitos!\nDigite o número com DDD")
+                return
+            }
+            break;
+    
+        case 'email':
+            if (String(chave).includes('@')) {
+                break;
+            }
+            else{
+                alert('Chave digitada está incorreta, digite um email válido!');
+                return
+            }
+        
+        default:
+            break;
+    }
+
     validaSenha()
 }
 
@@ -46,7 +74,7 @@ function cad_transferir() {
     var tipoChave = document.getElementById('tipoChave').value
     // var contato = document.getElementById('contato').value
     var desc = document.getElementById('desc').value
-    var adicionaContato = document.querySelector('input[name="adicionaContato"]:checked').value
+    var adicionaContato = document.getElementById('adicionaContato').value
     var valor = document.getElementById('valor').value
     var senha = document.getElementById('senha').value
     var chave = document.getElementById('chave').value
@@ -88,10 +116,10 @@ function enviar(dados){
                     case 'cad_transferir':
                         alert('Pix efetuado, Nº: ' + resposta.id_pix)
                         //ir para pag iframe
-                        open("../HTML/frame.html","_self")
+                        open("../HTML/principal.html","corpo")
                         // salva os dados no dadosLocais (LocalStorage)
                         var dadosLocais = JSON.stringify({
-                            saldo : resposta.saldo,
+                            saldo : resposta.novo_saldo,
                             id : id_conta
                         });
                         localStorage.setItem("storage", JSON.stringify(dadosLocais));
@@ -99,4 +127,36 @@ function enviar(dados){
                 }
             }
         } )
+}
+
+//Validação de CPF(Sim validação na controller!)
+function validarCPF(CPF) {
+    var soma = 0
+    var resto = 0
+    for (let index = 1; index <= 9; index++) {//multiplica os 9 primeiros digitos por numeros decrescente de 10 a 2 e soma tudo
+        soma += parseInt(CPF.substring(index-1, index)) * (11-index)
+    }
+    //console.log(soma)
+    resto = (soma * 10) % 11 //resto da divisão por 11 multiplicado por 10
+    //console.log(resto)
+    if(resto == 10 || resto == 11) {//se resto for 10 ou 11 será considerado 0. Senão fica com resto da divisão mesmo
+        resto = 0
+    }
+    if(resto != parseInt(CPF.substring(9, 10))) {//verifica se o primeiro dígito verificador é diferente do resto
+        return false
+    }
+    soma = 0
+    for (let index = 1; index <= 10; index++){
+        soma += parseInt(CPF.substring(index-1, index)) * (12-index)
+    }
+    //console.log(soma)
+    resto = (soma * 10) % 11
+    //console.log(resto)
+    if(resto == 10 || resto == 11) {
+        resto = 0
+    }
+    if(resto != parseInt(CPF.substring(10, 11))) {//verifica se o segundo dígito verificador é diferente do resto
+        return false
+    }
+    return true
 }

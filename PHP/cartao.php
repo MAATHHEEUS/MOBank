@@ -24,7 +24,7 @@ if($acao == 'cad_transferir'){
     $bandeira = 'Elo';
 
     #Cadastra um pix
-    $qry = "INSERT INTO `cartoes`(`id_cartao`, `conta`, `senha`, `numero`, `cod_verificador`, `bandeira`, `tipo_cartao`) VALUES (default,$id_conta,$senha,$numero,123,$bandeira,$tipoCartao)";
+    $qry = "INSERT INTO `cartoes`(`id_cartao`, `conta`, `senha`, `numero`, `cod_verificador`, `bandeira`, `tipo_cartao`) VALUES (default,$id_conta,$senha,$numero,123,'$bandeira','$tipoCartao')";
 
     #Executa query
     mysqli_query($conn, $qry);
@@ -54,18 +54,16 @@ if($acao == 'carregaCartoes'){
             'msg' => "Erro ao consultar os cartões. " . mysqli_error($conn)
         ));
         return;
-        break;
     }
 
     # Verifica se retornou linhas
     $qntd = mysqli_num_rows($resultset);
-    if ($qntd < 0) {
+    if ($qntd <= 0) {
         echo json_encode(array(
             'tipo' => 'E',
             'msg' => "Erro: Nenhum cartão cadastrado para esse cliente!"
         ));
         return;
-        break;
     }
 
     # Monta a grid de consulta

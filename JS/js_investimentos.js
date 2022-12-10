@@ -9,8 +9,13 @@ var registro = localStorage.getItem("storage");
 var parse = JSON.parse(registro);
 var obj = JSON.parse(parse);
 
-var id_conta = obj.id
-var saldo = obj.saldo.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL'})
+//Pega os dados salvos no dadosLocais (LocalStorage)
+var registro = localStorage.getItem("storage");
+var parse = JSON.parse(registro);
+var obj = JSON.parse(parse);
+
+var id_conta = Number(obj.id)
+var saldo = Number(obj.saldo)
 
 //Funções 
 function transferir() {

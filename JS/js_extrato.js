@@ -9,8 +9,8 @@ var registro = localStorage.getItem("storage");
 var parse = JSON.parse(registro);
 var obj = JSON.parse(parse);
 
-var id_conta = obj.id
-var saldo = obj.saldo.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL'})
+var id_conta = Number(obj.id)
+var saldo = Number(obj.saldo)
 
 //Funções 
 function transferir() {
@@ -18,6 +18,7 @@ function transferir() {
 }
 
 function cad_transferir() {
+    var periodo = document.getElementById('periodo').value
     var dados = new FormData() 
     dados.append('acao', 'cad_transferir')
     dados.append('id_conta', id_conta)
