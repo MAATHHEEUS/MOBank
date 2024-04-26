@@ -14,15 +14,19 @@
     <form id="form" action="../PHP/cadastro.php" method="post">
         <main>
             <label for="CPF">CPF: </label>
-            <input type="text" id="CPF" name="CPF" placeholder="apenas números" maxlength="11" minlength="11" size="14" required>
+            <input type="text" id="CPF" name="CPF" placeholder="apenas números" maxlength="14" minlength="11" size="14" required pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}">
             
             <br>
             <label for="nome">Nome completo: </label>
-            <input type="text" name="nome" id="nome" maxlength="40" size="50" placeholder="Apenas 40 caracteres" required>
+            <input type="text" name="nome" id="nome" minlength="3" maxlength="40" size="50" placeholder="Apenas 40 caracteres" required>
             
             <br>
             <label for="e-mail">e-mail: </label>
-            <input type="email" id="email" name="email" placeholder="MObank@email.com" size="50">
+            <input type="email" id="email" name="email" minlength="4" placeholder="MObank@email.com" size="50" required>
+
+            <br>
+            <label for="dt-nascimento">Data de nascimento: </label>
+            <input type="date" id="dt-nascimento" name="dt_nascimento" required>
             
             <br>
             <label for="senha">Senha: </label>
@@ -36,7 +40,11 @@
             </select>
 
             <br>
-            <input type="button" id="bot_cadastrar" value="Cadastrar">
+            <input type="checkbox" name="termos" id="termos" required>
+            <p>Li e concordo com os termos de uso</p>
+
+            <br>
+            <input type="submit" id="bot_cadastrar" value="Cadastrar">
             <p id="msg"></p>
             <a href="../PHP/cadastro.php"></a>
         </main>
