@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,11 +8,64 @@
     <title>MObank</title>
     <link rel="shortcut icon" href="../IMAGENS/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="../CSS/estilo.css">
+    <style>
+        .formulario__botao,
+        .camera__botao {
+            background: var(--azul-claro);
+            margin: 2em auto;
+            display: block;
+            border: none;
+            padding: 1em 4em;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 22px;
+            color: var(--branco);
+        }
+
+        .formulario__imagem {
+            display: block;
+            margin: 2em auto;
+        }
+
+        .formulario__imagem--invisivel {
+            display: none;
+        }
+
+        .formulario__botao--ancora {
+            text-decoration: none;
+            width: 50%;
+        }
+
+        .formulario__mensagem,
+        .formulario__camera {
+            display: none;
+        }
+    </style>
 </head>
+
 <body>
-    <img src="../IMAGENS/logo.png" alt="logo"><h1>Bem-Vindo ao MO Bank!</h1>
+    <img src="../IMAGENS/logo.png" alt="logo">
+    <h1>Bem-Vindo ao MO Bank!</h1>
     <h2>Vamos cadastrar sua foto!?</h2>
-    <script src="../JS/js_cadastro.js"></script>
+    <img src="../IMAGENS/reconhecimento.png" alt="Rosto com olhos e um sorriso dentro de um enquadramento"
+        data-video-botao class="formulario__imagem">
+
+    <div class="formulario__camera" data-camera>
+        <video width="320" height="240" autoplay data-video></video>
+        <button class='camera__botao' data-tirar-foto>Tirar foto</button>
+    </div>
+
+    <div class="formulario__mensagem" data-mensagem>
+        <canvas width="320" height="240" data-video-canvas></canvas>
+        <img src="../IMAGENS/ícone check.png" alt="Ícone de validação" class="formulario__imagem">
+        <p>Prontinho, imagem capturada!</p>
+
+        <a href="#" class="formulario__botao formulario__botao--ancora" data-enviar>Quero abrir minha
+            conta!</a>
+    </div>
+    <script src="../JS/js_cadastro-foto.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </body>
+
 </html>
