@@ -1,5 +1,8 @@
 # MOBank
- Sistema de banco digital
+
+ ### Sistema de banco digital
+ 
+ Como parte de aprendizado Full Stack eu criei um sistema de Banco Digital com as principais funções, desenvolvido com HTML/CSS, JavaScript, PHP e MySQL.
 
  PAG 01 - Cadastro/login
  PAG 02 - Inicial
